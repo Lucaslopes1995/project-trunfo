@@ -75,13 +75,15 @@ class Form extends React.Component {
             dataID="rare-input"
             onChange={ onInputChange }
           />
-          <Inputs
+          { !hasTrunfo ? <Inputs
             name="cardTrunfo"
             value={ cardTrunfo }
             tipo="checkbox"
             dataID="trunfo-input"
             onChange={ onInputChange }
           />
+            : <p>Você já tem um Super Trunfo em seu baralho</p>}
+
           <button
             type="submit"
             data-testid="save-button"

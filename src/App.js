@@ -68,17 +68,23 @@ class App extends React.Component {
         cardImage,
         cardRare,
         savedCards,
+        cardTrunfo,
       } = state;
       const newSavedCards = [...savedCards];
-      newSavedCards.push({ cardName,
+      newSavedCards.push({
+        cardName,
         cardDescription,
         cardAttr1,
         cardAttr2,
         cardAttr3,
         cardImage,
         cardRare,
+        cardTrunfo,
       });
-      return { savedCards: newSavedCards,
+      const validTrunfo = (newSavedCards.find((el) => el.cardTrunfo) !== undefined);
+      // console.log(validTrunfo)
+      return {
+        savedCards: newSavedCards,
         cardName: '',
         cardDescription: '',
         cardAttr1: 0,
@@ -86,6 +92,8 @@ class App extends React.Component {
         cardAttr3: 0,
         cardImage: '',
         cardRare: '',
+        isSaveButtonDisabled: true,
+        hasTrunfo: validTrunfo,
       };
     });
   }
