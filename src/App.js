@@ -13,7 +13,7 @@ class App extends React.Component {
       cardAttr3: '',
       cardImage: '',
       cardRare: '',
-      cardTrunfo: true,
+      cardTrunfo: false,
       hasTrunfo: '',
       isSaveButtonDisabled: false,
     };
@@ -22,6 +22,7 @@ class App extends React.Component {
   }
 
   handleChange({ target }) {
+    console.log(target.name, target.value);
     this.setState({ [target.name]: (target.type === 'checkbox')
       ? target.checked : target.value });
   }
