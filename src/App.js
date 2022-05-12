@@ -15,20 +15,78 @@ class App extends React.Component {
       cardRare: '',
       cardTrunfo: false,
       hasTrunfo: '',
-      isSaveButtonDisabled: false,
+      isSaveButtonDisabled: true,
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmmit = this.handleSubmmit.bind(this);
   }
 
   handleChange({ target }) {
-    console.log(target.name, target.value);
+    // console.log(target.name, target.value);
     this.setState({ [target.name]: (target.type === 'checkbox')
       ? target.checked : target.value });
+    // const {
+    //   cardName,
+    //   cardDescription,
+    //   cardAttr1,
+    //   cardAttr2,
+    //   cardAttr3,
+    //   cardImage,
+    //   cardRare,
+    // } = this.state;
+    // const validButton = !((cardName.length !== 0)
+    // && (cardDescription.length !== 0)
+    // && (cardImage.length !== 0)
+    // && (cardRare.length !== 0)
+    // && ((parseInt(cardAttr1) + parseInt(cardAttr2) + parseInt(cardAttr3)) < 210));
+    // console.log(validButton)
+    this.setState((state) => {
+      const {
+        cardName,
+        cardDescription,
+        cardAttr1,
+        cardAttr2,
+        cardAttr3,
+        cardImage,
+        cardRare,
+      } = state;
+      const validButton = !((cardName.length !== 0)
+        && (cardDescription.length !== 0)
+        && (cardImage.length !== 0)
+        && (cardRare.length !== 0)
+        && (parseInt(cardAttr1, 10) <= '90')
+        && (parseInt(cardAttr2, 10) <= '90')
+        && (parseInt(cardAttr3, 10) <= '90')
+
+        && (parseInt(cardAttr1, 10) >= 0)
+        && (parseInt(cardAttr2, 10) >= 0)
+        && (parseInt(cardAttr3, 10) >= 0)
+        && ((parseInt(cardAttr1, 10)
+        + parseInt(cardAttr2, 10)
+        + parseInt(cardAttr3, 10)) <= '210'));
+
+      return { isSaveButtonDisabled: validButton };
+    });
   }
 
   handleSubmmit(event) {
     event.preventDefault();
+    // const {
+    //   cardName,
+    //   cardDescription,
+    //   cardAttr1,
+    //   cardAttr2,
+    //   cardAttr3,
+    //   cardImage,
+    //   cardRare,
+    // } = this.state;
+    // const validButton = ((cardName.length !== 0)
+    // && (cardDescription.length !== 0)
+    // && (cardImage.length !== 0)
+    // && (cardRare.length !== 0)
+    // && ((cardAttr1 + cardAttr2 + cardAttr3) < 210));
+    // console.log(validButton)
+    // this.setState({ isSaveButtonDisabled: validButton });
   }
 
   render() {
