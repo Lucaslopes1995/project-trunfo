@@ -53,7 +53,6 @@ class Form extends React.Component {
             dataID="attr2-input"
             onChange={ onInputChange }
           />
-          <p>{hasTrunfo}</p>
           <Inputs
             name="cardAttr3"
             value={ cardAttr3 }
@@ -91,6 +90,7 @@ class Form extends React.Component {
           >
             Salvar
           </button>
+
         </form>
       </div>
 
