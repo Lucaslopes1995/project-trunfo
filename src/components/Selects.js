@@ -25,7 +25,7 @@ class Selects extends React.Component {
 Selects.propTypes = {
   name: PropTypes.string.isRequired,
   value: PropTypes.string.isRequired,
-  options: PropTypes.arrayOf(PropTypes.number).isRequired,
+  options: PropTypes.arrayOf(PropTypes.string).isRequired,
   dataID: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
 };

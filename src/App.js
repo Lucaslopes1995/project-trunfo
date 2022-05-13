@@ -14,7 +14,7 @@ class App extends React.Component {
       cardImage: '',
       cardRare: 'normal',
       cardTrunfo: false,
-      hasTrunfo: '',
+      hasTrunfo: false,
       isSaveButtonDisabled: true,
       savedCards: [],
       shouldRenderSavedCards: false,
@@ -96,23 +96,25 @@ class App extends React.Component {
         cardAttr2: 0,
         cardAttr3: 0,
         cardImage: '',
-        cardRare: '',
         isSaveButtonDisabled: true,
         hasTrunfo: validTrunfo,
         shouldRenderSavedCards: true,
         cardTrunfo: false,
+        cardRare: 'normal',
       };
     });
   }
 
-  deleteButtonCard({ target }) {
-    const { savedCards } = this.state;
-    const nameCard = target.parentNode.firstElementChild.innerText;
-    const actualCards = savedCards.filter((el) => el.cardName !== nameCard);
-    const validTrunfo = (actualCards.find((el) => el.cardTrunfo) !== undefined);
-    this.setState(() => ({ savedCards: actualCards,
-      hasTrunfo: validTrunfo,
-      cardTrunfo: false }));
+  deleteButtonCard(nameCard) {
+    this.setState((state) => {
+      const { savedCards } = state;
+      const actualCards = savedCards.filter((el) => el.cardName !== nameCard);
+      const validTrunfo = (actualCards.find((el) => el.cardTrunfo) !== undefined);
+
+      return { savedCards: actualCards,
+        hasTrunfo: validTrunfo,
+        cardTrunfo: false };
+    });
   }
 
   render() {
@@ -139,9 +141,9 @@ class App extends React.Component {
         <Form
           cardName={ cardName }
           cardDescription={ cardDescription }
-          cardAttr1={ cardAttr1 }
-          cardAttr2={ cardAttr2 }
-          cardAttr3={ cardAttr3 }
+          cardAttr1={ parseInt(cardAttr1, 10) }
+          cardAttr2={ parseInt(cardAttr2, 10) }
+          cardAttr3={ parseInt(cardAttr3, 10) }
           cardImage={ cardImage }
           cardRare={ cardRare }
           cardTrunfo={ cardTrunfo }
@@ -199,9 +201,9 @@ class App extends React.Component {
           previewCard
           cardName={ cardName }
           cardDescription={ cardDescription }
-          cardAttr1={ cardAttr1 }
-          cardAttr2={ cardAttr2 }
-          cardAttr3={ cardAttr3 }
+          cardAttr1={ parseInt(cardAttr1, 10) }
+          cardAttr2={ parseInt(cardAttr2, 10) }
+          cardAttr3={ parseInt(cardAttr3, 10) }
           cardImage={ cardImage }
           cardRare={ cardRare }
           cardTrunfo={ cardTrunfo }

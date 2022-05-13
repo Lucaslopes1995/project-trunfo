@@ -10,7 +10,7 @@ class Inputs extends React.Component {
         <input
           id={ name }
           name={ name }
-          value={ tipo === 'checkbox' ? value : value }
+          value={ value }
           checked={ tipo === 'checkbox' ? value : false }
           type={ tipo }
           data-testid={ dataID }
