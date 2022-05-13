@@ -17,6 +17,7 @@ class App extends React.Component {
       hasTrunfo: '',
       isSaveButtonDisabled: true,
       savedCards: [],
+      shouldRenderSavedCards: false,
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmmit = this.handleSubmmit.bind(this);
@@ -94,6 +95,7 @@ class App extends React.Component {
         cardRare: '',
         isSaveButtonDisabled: true,
         hasTrunfo: validTrunfo,
+        shouldRenderSavedCards: true,
       };
     });
   }
@@ -110,6 +112,7 @@ class App extends React.Component {
       hasTrunfo,
       isSaveButtonDisabled,
       savedCards,
+      shouldRenderSavedCards,
 
     } = this.state;
     return (
@@ -141,6 +144,19 @@ class App extends React.Component {
           cardRare={ cardRare }
           cardTrunfo={ cardTrunfo }
         />
+        {shouldRenderSavedCards
+        && savedCards.map((el) => (
+          <Card
+            key={ el.cardName }
+            cardName={ el.cardName }
+            cardDescription={ el.cardDescription }
+            cardAttr1={ el.cardAttr1 }
+            cardAttr2={ el.cardAttr2 }
+            cardAttr3={ el.cardAttr3 }
+            cardImage={ el.cardImage }
+            cardRare={ el.cardRare }
+            cardTrunfo={ el.cardTrunfo }
+          />))}
       </div>
     );
   }
