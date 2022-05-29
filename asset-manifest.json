@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/project-trunfo/static/css/main.56c7aae6.css",
+    "main.js": "/project-trunfo/static/js/main.9a0873fd.js",
+    "static/media/Group 224.png": "/project-trunfo/static/media/Group 224.97f256d52612f998845f.png",
+    "index.html": "/project-trunfo/index.html",
+    "main.56c7aae6.css.map": "/project-trunfo/static/css/main.56c7aae6.css.map",
+    "main.9a0873fd.js.map": "/project-trunfo/static/js/main.9a0873fd.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.56c7aae6.css",
+    "static/js/main.9a0873fd.js"
+  ]
+}
