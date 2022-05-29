@@ -3,10 +3,11 @@ import PropTypes from 'prop-types';
 
 class Inputs extends React.Component {
   render() {
-    const { name, value, tipo, dataID, onChange } = this.props;
+    const { texto, name, value, tipo, dataID, onChange } = this.props;
+    const classInput = (tipo !== 'checkbox') ? 'input-text' : 'input-checkbox';
     return (
-      <label htmlFor={ name }>
-        {name}
+      <label htmlFor={ name } className="labels-form">
+        {tipo !== 'checkbox' && <strong className={ classInput }>{texto}</strong>}
         <input
           id={ name }
           name={ name }
@@ -16,6 +17,7 @@ class Inputs extends React.Component {
           data-testid={ dataID }
           onChange={ onChange }
         />
+        {tipo === 'checkbox' && <strong className={ classInput }>{texto}</strong>}
         {/* {console.log(onChange)} */}
       </label>
 
@@ -24,6 +26,7 @@ class Inputs extends React.Component {
 }
 
 Inputs.propTypes = {
+  texto: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   value: PropTypes.string.isRequired,
   tipo: PropTypes.string.isRequired,

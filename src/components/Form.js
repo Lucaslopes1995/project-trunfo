@@ -17,22 +17,29 @@ class Form extends React.Component {
       isSaveButtonDisabled,
       onInputChange,
       onSaveButtonClick,
+      validSameName,
     } = this.props;
     // console.log(onInputChange)
+    const resultDisplayAttr = parseInt(210, 10)
+    - parseInt(cardAttr1, 10)
+    - parseInt(cardAttr2, 10)
+    - parseInt(cardAttr3, 10);
     return (
-      <div>
-
-        <h2>Adicione Uma Nova Carta</h2>
+      <div className="div-form-todo">
 
         <form onSubmit={ onSaveButtonClick }>
+          <h2>Adicione Uma Nova Carta</h2>
           <Inputs
+            texto="Nome"
             name="cardName"
             value={ cardName }
             tipo="text"
             dataID="name-input"
             onChange={ onInputChange }
           />
+          {!validSameName && <p>Não é possível utilizar o mesmo nome</p>}
           <Inputs
+            texto="Descrição"
             name="cardDescription"
             value={ cardDescription }
             tipo="textarea"
@@ -40,6 +47,7 @@ class Form extends React.Component {
             onChange={ onInputChange }
           />
           <Inputs
+            texto="Attr01"
             name="cardAttr1"
             value={ cardAttr1 }
             tipo="number"
@@ -47,6 +55,7 @@ class Form extends React.Component {
             onChange={ onInputChange }
           />
           <Inputs
+            texto="Attr02"
             name="cardAttr2"
             value={ cardAttr2 }
             tipo="number"
@@ -54,13 +63,22 @@ class Form extends React.Component {
             onChange={ onInputChange }
           />
           <Inputs
+            texto="Attr03"
             name="cardAttr3"
             value={ cardAttr3 }
             tipo="number"
             dataID="attr3-input"
             onChange={ onInputChange }
           />
+
+          <div className="div-displayAttr">
+            <span>
+              Pontos restantes =
+              {resultDisplayAttr}
+            </span>
+          </div>
           <Inputs
+            texto="Imagem"
             name="cardImage"
             value={ cardImage }
             tipo="text"
@@ -68,6 +86,7 @@ class Form extends React.Component {
             onChange={ onInputChange }
           />
           <Selects
+            texto="Raridade"
             name="cardRare"
             value={ cardRare }
             options={ ['normal', 'raro', 'muito raro'] }
@@ -75,6 +94,7 @@ class Form extends React.Component {
             onChange={ onInputChange }
           />
           { !hasTrunfo ? <Inputs
+            texto="Super Trybe Trunfo"
             name="cardTrunfo"
             value={ cardTrunfo }
             tipo="checkbox"
@@ -84,6 +104,7 @@ class Form extends React.Component {
             : <p>Você já tem um Super Trunfo em seu baralho</p>}
 
           <button
+            className="button-submit"
             type="submit"
             data-testid="save-button"
             disabled={ isSaveButtonDisabled }
@@ -92,8 +113,8 @@ class Form extends React.Component {
           </button>
 
         </form>
-      </div>
 
+      </div>
     );
   }
 }
